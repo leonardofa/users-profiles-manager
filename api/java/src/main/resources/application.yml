@@ -1,0 +1,17 @@
+server:
+  compression:
+    enabled: true
+
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost:3306}/users?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+  jpa:
+    show-sql: true
+  jackson:
+    deserialization:
+      fail-on-ignored-properties: true
+      fail-on-unknown-properties: true
+  web:
+    resources:
+      add-mappings: false
