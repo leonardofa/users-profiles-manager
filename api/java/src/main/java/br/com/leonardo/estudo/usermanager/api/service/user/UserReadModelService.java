@@ -25,4 +25,8 @@ public class UserReadModelService {
     return userRepository.findAll().stream().map((element) -> mapper.map(element, UserResponse.class)).collect(Collectors.toList());
   }
 
+  public UserResponse executeByIdentification(String identification) {
+    return mapper.map(userReadEntityService.executeByIdentification(identification), UserResponse.class);
+  }
+
 }

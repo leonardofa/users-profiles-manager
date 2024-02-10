@@ -26,7 +26,7 @@ public class UserController {
   private final UserReadModelService read;
   private final UserDeleteService delete;
 
-  @PreAuthorize("@securityUtil.authUser(#userId)")
+  @PreAuthorize("@securityUtil.authUser(#id)")
   @PutMapping("{id}")
   public ResponseEntity<UserResponse> update(@Valid @RequestBody UserUpdateRequest body, @PathVariable String id) {
     return ResponseEntity.ok(update.execute(id, body));
@@ -36,6 +36,12 @@ public class UserController {
   @GetMapping("{id}")
   public ResponseEntity<UserResponse> read(@PathVariable String id) {
     return ResponseEntity.ok(read.execute(id));
+  }
+
+  @PreAuthorize("hasAuthority('ADMINISTRATOR') or @securityUtil.authUserIdentification(#identification)")
+  @GetMapping("find/identification/{identification}")
+  public ResponseEntity<UserResponse> readByIdentification(@PathVariable String identification) {
+    return ResponseEntity.ok(read.executeByIdentification(identification));
   }
 
   @PreAuthorize("hasAuthority('ADMINISTRATOR')")

@@ -1,0 +1,435 @@
+_type: export
+__export_format: 4
+__export_date: 2024-02-10T17:44:44.718Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_ae6353e8086c4f2c8914f608f2a7369c
+    parentId: fld_ba8666421f5a40f795ec82ec99f229ca
+    modified: 1707575508401
+    created: 1707574885719
+    url: "{{ _.base_url }}/users"
+    name: /users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+      useISO88591: false
+    metaSortKey: -1707575480665
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ba8666421f5a40f795ec82ec99f229ca
+    parentId: wrk_ded5bce45723474baa05bafd75ef3003
+    modified: 1707575475562
+    created: 1707575475562
+    name: admin
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1707575475562
+    _type: request_group
+  - _id: wrk_ded5bce45723474baa05bafd75ef3003
+    parentId: null
+    modified: 1691699482857
+    created: 1691699482857
+    name: My Collection
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_31805d27a62a45ef8547b3eff8bd1b77
+    parentId: fld_ba8666421f5a40f795ec82ec99f229ca
+    modified: 1707575503302
+    created: 1707574885718
+    url: "{{ _.base_url }}/profiles"
+    name: /profiles
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "string",
+          "description": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575480565
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b1f36eafe5fb4afab449eb85a66c53d6
+    parentId: fld_ba8666421f5a40f795ec82ec99f229ca
+    modified: 1707575500083
+    created: 1707574885716
+    url: "{{ _.base_url }}/profiles"
+    name: /profiles
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575480465
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3c33fbb943864a86974d082e784a234f
+    parentId: fld_ba8666421f5a40f795ec82ec99f229ca
+    modified: 1707575607109
+    created: 1707574885707
+    url: "{{ _.base_url }}/profiles/{% prompt 'profileId', '', '0', '', false, true
+      %}"
+    name: /profiles/{id}
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575480365
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_685c4303b5ea4d69b50be0f323897c63
+    parentId: fld_ba8666421f5a40f795ec82ec99f229ca
+    modified: 1707575623175
+    created: 1707574885709
+    url: "{{ _.base_url }}/profiles/{% prompt 'profileId', '', '0', '', false, true
+      %}"
+    name: /profiles/{id}
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "string",
+          "description": "string"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575480265
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_27d244a8972f40109cfcd70fdec745c3
+    parentId: fld_ba8666421f5a40f795ec82ec99f229ca
+    modified: 1707575627287
+    created: 1707574885710
+    url: "{{ _.base_url }}/profiles/{% prompt 'profileId', '', '0', '', false, true
+      %}"
+    name: /profiles/{id}
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575480165
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6228ff4722394fe289badc95bdf49739
+    parentId: fld_ba8666421f5a40f795ec82ec99f229ca
+    modified: 1707575655534
+    created: 1707574885712
+    url: "{{ _.base_url }}/profiles/{% prompt 'profileId', '', '0', '', false, true
+      %}/add-user/{% prompt 'userId', '', '0', '', false, true %}"
+    name: /profiles/{id}/add-user/{user}
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575480065
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5135fb98e41345f2a3acf06a9de39853
+    parentId: fld_8d282a0f7ced4a6b99fbfa6d2fcc08da
+    modified: 1707585652498
+    created: 1707574885701
+    url: "{{ _.base_url }}/users/{% prompt 'userId', '', '0', '', false, true %}"
+    name: /users/{id}
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575449693
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_8d282a0f7ced4a6b99fbfa6d2fcc08da
+    parentId: wrk_ded5bce45723474baa05bafd75ef3003
+    modified: 1707575444137
+    created: 1707575444137
+    name: user
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1707575444137
+    _type: request_group
+  - _id: req_9418ab7d28944714b63226580778a337
+    parentId: fld_8d282a0f7ced4a6b99fbfa6d2fcc08da
+    modified: 1707586633869
+    created: 1707586604715
+    url: "{{ _.base_url }}/users/find/identification/{% prompt 'identification', '',
+      '0', '', false, true %}"
+    name: /users/find/identification/{identification}
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575449643
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f1287d4de0be424aa088e0277e89ac15
+    parentId: fld_8d282a0f7ced4a6b99fbfa6d2fcc08da
+    modified: 1707585677850
+    created: 1707574885703
+    url: "{{ _.base_url }}/users/{% prompt 'userId', '', '0', '', false, true %}"
+    name: /users/{id}
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"Leonardo Ferreira 123123",
+          "born": "1981-03-10",
+        	"contact":"asdfçsakljfhklsajdfhsadfsadf"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575449593
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_65224d5b12b74a49823db528dd8f8ec5
+    parentId: fld_8d282a0f7ced4a6b99fbfa6d2fcc08da
+    modified: 1707576379297
+    created: 1707574885705
+    url: "{{ _.base_url }}/users/{% prompt 'userId', '', '0', '', false, true %}"
+    name: /users/{id}
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      username: "{{ _.httpUsername }}"
+      password: "{{ _.httpPassword }}"
+    metaSortKey: -1707575449493
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b77f59ef37e249569cd350362991708b
+    parentId: fld_0841cfc0596745e5b0983f8efbac0dd6
+    modified: 1707585465357
+    created: 1707574885714
+    url: "{{ _.base_url }}/public/users"
+    name: /public/users
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "identification": "leonardo new",
+          "secret": "leo",
+          "name": "Leonardo Ferreira Alves",
+          "born": "1981-04-10",
+          "contact": "61 996874433"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication: {}
+    metaSortKey: -1707575438638
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_0841cfc0596745e5b0983f8efbac0dd6
+    parentId: wrk_ded5bce45723474baa05bafd75ef3003
+    modified: 1707575431809
+    created: 1707575431809
+    name: public
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1707575431809
+    _type: request_group
+  - _id: env_a0ff4ca95cc9afaf27f40a443aa3e75b9f943ab6
+    parentId: wrk_ded5bce45723474baa05bafd75ef3003
+    modified: 1691699650210
+    created: 1691699482860
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: {}
+    color: null
+    isPrivate: false
+    metaSortKey: 1691699482860
+    _type: environment
+  - _id: jar_a0ff4ca95cc9afaf27f40a443aa3e75b9f943ab6
+    parentId: wrk_ded5bce45723474baa05bafd75ef3003
+    modified: 1707574960228
+    created: 1691699482864
+    name: Default Jar
+    cookies:
+      - key: JSESSIONID
+        value: F2BAB3D4F9B9D6AE9EE52F4B25453E52
+        domain: localhost
+        path: /
+        httpOnly: true
+        hostOnly: true
+        creation: 2024-02-10T14:22:40.227Z
+        lastAccessed: 2024-02-10T14:22:40.227Z
+        id: a8307125-559e-45fd-825a-2a2a7a6b21b7
+    _type: cookie_jar
+  - _id: env_6e8e7a59ee1b4347b45188b5cdd30b1e
+    parentId: env_a0ff4ca95cc9afaf27f40a443aa3e75b9f943ab6
+    modified: 1707585728669
+    created: 1707574885699
+    name: OpenAPI env localhost:8080
+    data:
+      scheme: http
+      base_url: localhost:8080
+      host: localhost:8080
+      httpUsername: admin
+      httpPassword: gs3
+    dataPropertyOrder:
+      "&":
+        - scheme
+        - base_url
+        - host
+        - httpUsername
+        - httpPassword
+    color: null
+    isPrivate: false
+    metaSortKey: 1707574885699
+    _type: environment

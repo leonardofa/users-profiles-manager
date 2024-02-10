@@ -16,4 +16,8 @@ public class UserReadEntityService {
     return repository.findById(id).orElseThrow(UserNotFoundException::new);
   }
 
+  public User executeByIdentification(String identification) {
+    return repository.findByIdentification(identification).orElseThrow(UserNotFoundException::new);
+  }
+
 }

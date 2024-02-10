@@ -1,8 +1,11 @@
 package br.com.leonardo.estudo.usermanager.api.controller;
 
+import br.com.leonardo.estudo.usermanager.api.model.AuthRequest;
 import br.com.leonardo.estudo.usermanager.api.model.user.UserCreationRequest;
 import br.com.leonardo.estudo.usermanager.api.model.user.UserResponse;
 import br.com.leonardo.estudo.usermanager.api.service.user.UserCreationService;
+import br.com.leonardo.estudo.usermanager.infrastructure.security.CustomUser;
+import br.com.leonardo.estudo.usermanager.infrastructure.security.SecurityUtil;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

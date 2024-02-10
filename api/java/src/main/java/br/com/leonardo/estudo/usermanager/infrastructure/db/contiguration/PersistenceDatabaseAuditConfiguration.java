@@ -1,5 +1,6 @@
 package br.com.leonardo.estudo.usermanager.infrastructure.db.contiguration;
 
+import br.com.leonardo.estudo.usermanager.infrastructure.security.SecurityUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.auditing.DateTimeProvider;
@@ -14,8 +15,8 @@ import java.util.Optional;
 public class PersistenceDatabaseAuditConfiguration {
 
   @Bean
-  public AuditorAware<String> userSecurityAuditorAware() {
-    return new UserSecurityAuditorAware();
+  public AuditorAware<String> userSecurityAuditorAware(SecurityUtil securityUtil) {
+    return new UserSecurityAuditorAware(securityUtil::getUserName);
   }
 
   @Bean
