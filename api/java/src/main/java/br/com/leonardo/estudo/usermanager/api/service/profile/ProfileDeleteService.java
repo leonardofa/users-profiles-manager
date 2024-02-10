@@ -12,16 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ProfileDeleteService {
 
-    private final ProfileRepository profileRepository;
+  private final ProfileRepository profileRepository;
 
-    @Transactional
-    public void execute(String id) {
-        try {
-            profileRepository.deleteById(id);
-            profileRepository.flush();
-        } catch (DataIntegrityViolationException | EmptyResultDataAccessException e) {
-            throw new ResourceBlockedException("It is not possible delete the profile in use");
-        }
+  @Transactional
+  public void execute(String id) {
+    try {
+      profileRepository.deleteById(id);
+      profileRepository.flush();
+    } catch (DataIntegrityViolationException | EmptyResultDataAccessException e) {
+      throw new ResourceBlockedException("It is not possible delete the profile in use");
     }
+  }
 
 }

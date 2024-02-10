@@ -1,7 +1,6 @@
 package br.com.leonardo.estudo.usermanager.infrastructure.modelmapper.converters;
 
-import br.com.leonardo.estudo.usermanager.api.model.profile.ProfileResponse;
-import br.com.leonardo.estudo.usermanager.api.model.user.UserProfileResponse;
+import br.com.leonardo.estudo.usermanager.api.model.profile.ProfileReduceResponse;
 import br.com.leonardo.estudo.usermanager.infrastructure.db.repository.UserRepository;
 import br.com.leonardo.estudo.usermanager.infrastructure.domain.entity.Profile;
 import jakarta.annotation.PostConstruct;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ProfileEntityToModel implements Converter<Profile, ProfileResponse> {
+public class ProfileEntityToReduceModel implements Converter<Profile, ProfileReduceResponse> {
 
   private final UserRepository userRepository;
 
@@ -26,11 +25,10 @@ public class ProfileEntityToModel implements Converter<Profile, ProfileResponse>
   }
 
   @Override
-  public ProfileResponse convert(MappingContext<Profile, ProfileResponse> context) {
+  public ProfileReduceResponse convert(MappingContext<Profile, ProfileReduceResponse> context) {
     val source = context.getSource();
     val target = new ModelMapper().map(source, context.getDestinationType());
-    val users = userRepository.findByProfile(source);
-    target.setUsers(users.stream().map((element) -> mapper.map(element, UserProfileResponse.class)).toList());
+    target.setUsersQuantity(userRepository.countByProfile(source));
     return target;
   }
 

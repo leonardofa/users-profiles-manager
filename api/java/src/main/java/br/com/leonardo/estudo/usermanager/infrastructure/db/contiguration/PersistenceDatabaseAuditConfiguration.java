@@ -13,14 +13,14 @@ import java.util.Optional;
 @EnableJpaAuditing(auditorAwareRef = "userSecurityAuditorAware", dateTimeProviderRef = "offsetDateTimeProvider")
 public class PersistenceDatabaseAuditConfiguration {
 
-    @Bean
-    public AuditorAware<String> userSecurityAuditorAware() {
-        return new UserSecurityAuditorAware();
-    }
+  @Bean
+  public AuditorAware<String> userSecurityAuditorAware() {
+    return new UserSecurityAuditorAware();
+  }
 
-    @Bean
-    public DateTimeProvider offsetDateTimeProvider() {
-        return () -> Optional.of(OffsetDateTime.now());
-    }
+  @Bean
+  public DateTimeProvider offsetDateTimeProvider() {
+    return () -> Optional.of(OffsetDateTime.now());
+  }
 
 }

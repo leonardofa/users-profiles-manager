@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserUpdateService {
 
-    private final UserReadEntityService userReadEntityService;
-    private final UserRepository repository;
-    private final ModelMapper mapper;
+  private final UserReadEntityService userReadEntityService;
+  private final UserRepository repository;
+  private final ModelMapper mapper;
 
-    public UserResponse execute(String id, UserUpdateRequest request) {
-        val entity = userReadEntityService.execute(id);
-        mapper.map(request, entity);
-        return mapper.map(repository.save(entity), UserResponse.class);
-    }
+  public UserResponse execute(String id, UserUpdateRequest request) {
+    val entity = userReadEntityService.execute(id);
+    mapper.map(request, entity);
+    return mapper.map(repository.save(entity), UserResponse.class);
+  }
 
 }

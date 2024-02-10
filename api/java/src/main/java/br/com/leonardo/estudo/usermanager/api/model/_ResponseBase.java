@@ -8,8 +8,8 @@ import java.time.OffsetDateTime;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class _ResponseBase {
-    private OffsetDateTime createdDate;
-    private String createdBy;
-    private OffsetDateTime lastModifiedDate;
-    private String lastModifiedBy;
+  private OffsetDateTime createdDate;
+  private String createdBy;
+  private OffsetDateTime lastModifiedDate;
+  private String lastModifiedBy;
 }

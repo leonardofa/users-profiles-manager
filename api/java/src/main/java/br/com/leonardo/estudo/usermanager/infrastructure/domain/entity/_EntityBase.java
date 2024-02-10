@@ -21,24 +21,24 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class _EntityBase {
 
-    @Id
-    private String id;
+  @Id
+  private String id;
 
-    @CreatedDate
-    private OffsetDateTime createdDate;
+  @CreatedDate
+  private OffsetDateTime createdDate;
 
-    @CreatedBy
-    private String createdBy;
+  @CreatedBy
+  private String createdBy;
 
-    @LastModifiedDate
-    private OffsetDateTime lastModifiedDate;
+  @LastModifiedDate
+  private OffsetDateTime lastModifiedDate;
 
-    @LastModifiedBy
-    private String lastModifiedBy;
+  @LastModifiedBy
+  private String lastModifiedBy;
 
-    @PrePersist
-    public void prePersisty() {
-        setId(UUID.randomUUID().toString());
-    }
+  @PrePersist
+  public void prePersisty() {
+    setId(UUID.randomUUID().toString());
+  }
 
 }

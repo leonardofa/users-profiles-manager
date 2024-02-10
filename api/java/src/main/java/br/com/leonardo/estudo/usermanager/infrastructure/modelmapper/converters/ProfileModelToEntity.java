@@ -15,19 +15,19 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ProfileModelToEntity implements Converter<ProfileCreationRequest, Profile> {
 
-    private final ModelMapper mapper;
+  private final ModelMapper mapper;
 
-    @PostConstruct
-    public void init() {
-        mapper.addConverter(this);
-    }
+  @PostConstruct
+  public void init() {
+    mapper.addConverter(this);
+  }
 
-    @Override
-    public Profile convert(MappingContext<ProfileCreationRequest, Profile> context) {
-        val request = context.getSource();
-        val entity = new ModelMapper().map(request, context.getDestinationType());
-        entity.setType(ProfileType.USER);
-        return entity;
-    }
+  @Override
+  public Profile convert(MappingContext<ProfileCreationRequest, Profile> context) {
+    val request = context.getSource();
+    val entity = new ModelMapper().map(request, context.getDestinationType());
+    entity.setType(ProfileType.USER);
+    return entity;
+  }
 
 }

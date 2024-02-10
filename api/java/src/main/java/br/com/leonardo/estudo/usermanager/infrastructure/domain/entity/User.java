@@ -12,17 +12,17 @@ import java.time.LocalDate;
 @Entity
 public class User extends _EntityBase {
 
-    private String identification;
+  private String identification;
 
-    private String name;
+  private String name;
 
-    private String secret;
+  private String secret;
 
-    @ManyToOne
-    private Profile profile;
+  @ManyToOne
+  private Profile profile;
 
-    private String contact;
+  private String contact;
 
-    private LocalDate born;
+  private LocalDate born;
 
 }

@@ -12,16 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserDeleteService {
 
-    private final UserRepository repository;
+  private final UserRepository repository;
 
-    @Transactional
-    public void execute(String id) {
-        try {
-            repository.deleteById(id);
-            repository.flush();
-        } catch (DataIntegrityViolationException | EmptyResultDataAccessException e) {
-            throw new ResourceBlockedException("It is not possible delete the user in use/blocked");
-        }
+  @Transactional
+  public void execute(String id) {
+    try {
+      repository.deleteById(id);
+      repository.flush();
+    } catch (DataIntegrityViolationException | EmptyResultDataAccessException e) {
+      throw new ResourceBlockedException("It is not possible delete the user in use/blocked");
     }
+  }
 
 }

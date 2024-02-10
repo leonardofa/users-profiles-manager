@@ -11,11 +11,11 @@ import lombok.Setter;
 @Entity
 public class Profile extends _EntityBase {
 
-    private String name;
+  private String name;
 
-    private String description;
+  private String description;
 
-    @Enumerated(EnumType.STRING)
-    private ProfileType type;
+  @Enumerated(EnumType.STRING)
+  private ProfileType type;
 
 }

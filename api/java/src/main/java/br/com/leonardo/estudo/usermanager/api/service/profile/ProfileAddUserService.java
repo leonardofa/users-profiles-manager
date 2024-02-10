@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProfileAddUserService {
 
-    private final UserProfileReadEntityService userProfileReadEntityService;
-    private final UserReadEntityService userReadEntityService;
-    private final UserRepository userRepository;
+  private final UserProfileReadEntityService userProfileReadEntityService;
+  private final UserReadEntityService userReadEntityService;
+  private final UserRepository userRepository;
 
-    public void execute(String id, String userId) {
-        val user = userReadEntityService.execute(userId);
-        user.setProfile(userProfileReadEntityService.execute(id));
-        userRepository.save(user);
-    }
+  public void execute(String id, String userId) {
+    val user = userReadEntityService.execute(userId);
+    user.setProfile(userProfileReadEntityService.execute(id));
+    userRepository.save(user);
+  }
 
 }

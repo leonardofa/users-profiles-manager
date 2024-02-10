@@ -15,24 +15,24 @@ import java.util.List;
 @Schema(name = "Problema")
 public class Problem {
 
-	private Integer status;
+  private Integer status;
 
-	private String detail;
+  private String detail;
 
-	private String userMessage;
+  private String userMessage;
 
-	private OffsetDateTime timestamp;
+  private OffsetDateTime timestamp;
 
-	private List<Object> objects;
+  private List<Object> objects;
 
-	@Builder
-	@Getter
-	public static class Object {
+  @Builder
+  @Getter
+  public static class Object {
 
-		private String name;
+    private String name;
 
-		private String userMessage;
+    private String userMessage;
 
-	}
+  }
 
 }
