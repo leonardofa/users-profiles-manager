@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(
         (data: User) => {
-          localStorage.setItem('userId', data.identification);
-          localStorage.setItem('userIdentification', data.id);
+          localStorage.setItem('userId', data.id);
+          localStorage.setItem('userIdentification', data.identification);
           localStorage.setItem('userProfile', data.profile);
           localStorage.setItem('token', btoa(`${data.identification}:${this.loginForm.get('secret')?.value}`));
           if(data.profile === 'ADMINISTRATOR'){
@@ -57,6 +57,12 @@ export class LoginComponent implements OnInit {
       return;
     }
   }
+
+  signup(){
+    Utils.cleanAuth();
+    this.router.navigateByUrl('/signup');
+  }
+
 }
 
 

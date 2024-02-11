@@ -1,7 +1,6 @@
 package br.com.leonardo.estudo.usermanager.api.controller;
 
 import br.com.leonardo.estudo.usermanager.api.model.profile.ProfileCreationRequest;
-import br.com.leonardo.estudo.usermanager.api.model.profile.ProfileReduceResponse;
 import br.com.leonardo.estudo.usermanager.api.model.profile.ProfileResponse;
 import br.com.leonardo.estudo.usermanager.api.model.profile.ProfileUpdateRequest;
 import br.com.leonardo.estudo.usermanager.api.service.profile.*;
@@ -9,13 +8,14 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+@Slf4j
 @SecurityRequirement(name = "security_basic_auth")
 @Tag(name = "Profiles")
 @RestController
@@ -46,7 +46,7 @@ public class ProfileController {
   }
 
   @GetMapping()
-  public ResponseEntity<List<ProfileReduceResponse>> all() {
+  public ResponseEntity<List<ProfileResponse>> all() {
     return ResponseEntity.ok(read.list());
   }
 
@@ -58,8 +58,7 @@ public class ProfileController {
 
   @PutMapping("{id}/add-user/{user}")
   public ResponseEntity<ProfileResponse> addUser(@PathVariable String id, @PathVariable String user) {
-    addUser.execute(id, user);
-    return ResponseEntity.noContent().build();
+    return ResponseEntity.ok(addUser.execute(id, user));
   }
 
 }

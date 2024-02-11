@@ -20,7 +20,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSelectModule} from "@angular/material/select";
-import {MatOptionModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -55,6 +57,9 @@ import {MatOptionModule} from "@angular/material/core";
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: BasicInterceptor, multi: true}],
   bootstrap: [AppComponent]

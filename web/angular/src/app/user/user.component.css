@@ -91,11 +91,6 @@
 mat-form-field .form-field{
   color: #000000BC !important;
 }
-mat-card-actions {
-  display: flex;
-  justify-content: flex-end;
-}
-
 
 @media(max-width:768px) {
   .wrap-login{

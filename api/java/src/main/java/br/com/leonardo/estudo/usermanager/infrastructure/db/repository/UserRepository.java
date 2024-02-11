@@ -1,6 +1,7 @@
 package br.com.leonardo.estudo.usermanager.infrastructure.db.repository;
 
 import br.com.leonardo.estudo.usermanager.infrastructure.domain.entity.Profile;
+import br.com.leonardo.estudo.usermanager.infrastructure.domain.entity.ProfileType;
 import br.com.leonardo.estudo.usermanager.infrastructure.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,4 +14,6 @@ public interface UserRepository extends JpaRepository<User, String> {
   Optional<User> findByIdentification(String username);
 
   Integer countByProfile(Profile source);
+
+  Integer countByProfileType(ProfileType profileType);
 }

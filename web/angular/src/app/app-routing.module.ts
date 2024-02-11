@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'user',
     component: UserComponent,
   },
+  {
+    path: 'signup',
+    component: UserComponent,
+  },
 ];
 
 @NgModule({

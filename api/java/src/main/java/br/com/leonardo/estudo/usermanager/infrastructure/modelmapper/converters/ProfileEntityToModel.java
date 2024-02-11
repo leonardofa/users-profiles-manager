@@ -1,7 +1,7 @@
 package br.com.leonardo.estudo.usermanager.infrastructure.modelmapper.converters;
 
 import br.com.leonardo.estudo.usermanager.api.model.profile.ProfileResponse;
-import br.com.leonardo.estudo.usermanager.api.model.user.UserProfileResponse;
+import br.com.leonardo.estudo.usermanager.api.model.user.UserResponse;
 import br.com.leonardo.estudo.usermanager.infrastructure.db.repository.UserRepository;
 import br.com.leonardo.estudo.usermanager.infrastructure.domain.entity.Profile;
 import jakarta.annotation.PostConstruct;
@@ -29,8 +29,7 @@ public class ProfileEntityToModel implements Converter<Profile, ProfileResponse>
   public ProfileResponse convert(MappingContext<Profile, ProfileResponse> context) {
     val source = context.getSource();
     val target = new ModelMapper().map(source, context.getDestinationType());
-    val users = userRepository.findByProfile(source);
-    target.setUsers(users.stream().map((element) -> mapper.map(element, UserProfileResponse.class)).toList());
+    target.setUsers(userRepository.findByProfile(source).stream().map((element) -> mapper.map(element, UserResponse.class)).toList());
     return target;
   }
 
