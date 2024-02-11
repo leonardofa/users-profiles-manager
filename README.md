@@ -8,7 +8,18 @@ WEB: NODE 20.11.0
 
 ## API
     .\mvnw spring-boot:run - local without IDE (must be installed java 21 version)
+    **I put a collection on project root with api requests (insomnia export):
+     Insomnia_collections_2024-02-10.yaml
 
 ## WEB
     in project folder: npm install
     npm run start
+
+
+Soluções planejadas e não executadas:
+ * melhoramento da interface
+ * mensagens melhores apra usuario (locate and translate)
+ * docker para web
+ * docker compose
+ * k8s e publicacao via gitactions
+ *
