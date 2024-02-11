@@ -1,7 +1,7 @@
 # users-profiles-manager
-DB: Mysql 8.3
-API: JAVA JDK 21 + SpringBoot 3.2
-WEB: NODE 20.11.0
+- DB: Mysql 8.3
+- API: JAVA JDK 21 + SpringBoot 3.2
+- WEB: Angular 16 + NODE 20.11.0
 
 ## DB docker or local isntalation (user root without password)
     docker run -d -p 3306:3306 --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:8.3.0 (must be installed docker engine)
