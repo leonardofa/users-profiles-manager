@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
@@ -147,13 +148,22 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     return handleExceptionInternal(ex, problem, headers, status, request);
   }
 
-  @ExceptionHandler(AccessDeniedException.class)
-  public ResponseEntity<?> handleEntidadeNaoEncontrada(AccessDeniedException ex, WebRequest request) {
+  @ExceptionHandler({AccessDeniedException.class})
+  public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex, WebRequest request) {
     HttpStatus status = HttpStatus.FORBIDDEN;
     String detail = ex.getMessage();
     Problem problem = createProblemBuilder(status, detail).userMessage(detail).userMessage("Forbidden.").build();
     return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
   }
+
+  @ExceptionHandler({BadCredentialsException.class})
+  public ResponseEntity<?> handleBadCredentialsException(BadCredentialsException ex, WebRequest request) {
+    HttpStatus status = HttpStatus.UNAUTHORIZED;
+    String detail = ex.getMessage();
+    Problem problem = createProblemBuilder(status, detail).userMessage(detail).userMessage("Forbidden.").build();
+    return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+  }
+
 
   @ExceptionHandler(BusinessException.class)
   public ResponseEntity<?> handleEntidadeNaoEncontrada(BusinessException ex, WebRequest request) {

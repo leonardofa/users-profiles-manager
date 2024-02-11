@@ -1,10 +1,17 @@
 package br.com.leonardo.estudo.usermanager.infrastructure.security;
 
 
+import br.com.leonardo.estudo.usermanager.api.exception.Problem;
 import br.com.leonardo.estudo.usermanager.infrastructure.db.repository.UserRepository;
+import br.com.leonardo.estudo.usermanager.infrastructure.domain.exception.UserNotFoundException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.val;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,12 +20,16 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,7 +51,28 @@ public class SecurityConfiguration {
                 .requestMatchers(antMatcher("/public/**")).permitAll()
                 .anyRequest().authenticated()
         )
-        .httpBasic(Customizer.withDefaults());
+        .httpBasic(httpBasicConfigurer_ -> {
+          httpBasicConfigurer_.realmName("user-profile-manager");
+          httpBasicConfigurer_.authenticationEntryPoint(new BasicAuthenticationEntryPoint() {
+            @Override
+            public void afterPropertiesSet() {
+              setRealmName("user-profile-manager");
+              super.afterPropertiesSet();
+            }
+            @Override
+            public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authEx) throws IOException {
+              val mapper = new ObjectMapper();
+              mapper.registerModule(new JavaTimeModule());
+              HttpStatus status = HttpStatus.UNAUTHORIZED;
+              val problem = Problem.builder().status(status.value()).detail("Bad credentials").userMessage("It is not possible access with this credentials");
+              response.setStatus(status.value());
+              response.setContentType("application/json");
+              response.setCharacterEncoding("UTF-8");
+              response.getWriter().write(mapper.writeValueAsString(problem.build()));
+            }
+          });
+        })
+    ;
     return http.build();
   }
 
@@ -49,16 +81,13 @@ public class SecurityConfiguration {
     val authenticationProvider = new DaoAuthenticationProvider();
     authenticationProvider.setUserDetailsService(userDetailsService);
     authenticationProvider.setPasswordEncoder(passwordEncoder);
-    val providerManager = new ProviderManager(authenticationProvider);
-    providerManager.setEraseCredentialsAfterAuthentication(true);
-    return providerManager;
+    return new ProviderManager(authenticationProvider);
   }
 
   @Bean
   public UserDetailsService userDetailsService(UserRepository userRepository) {
     return username -> {
-      val user = userRepository.findByIdentification(username)
-          .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+      val user = userRepository.findByIdentification(username).orElseThrow(UserNotFoundException::new);
       return new CustomUser(
           user.getId(),
           user.getIdentification(),
@@ -67,6 +96,5 @@ public class SecurityConfiguration {
       );
     };
   }
-
 
 }
